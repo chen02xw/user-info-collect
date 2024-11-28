@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.user.info.collect.mapper.BossMapper">
+
+    <insert id="save" parameterType="com.user.info.collect.entity.Boss">
+        INSERT INTO boss
+            (addr, area, area_name, city_id, city_name, tel, std_tag, std_tag_id, name)
+        VALUES (
+            #{addr}, #{area}, #{areaName}, #{cityId}, #{cityName}, #{tel}, #{stdTag}, #{stdTagId}, #{name}
+        )
+    </insert>
+</mapper>

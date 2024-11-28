@@ -1,25 +1,26 @@
 package com.user.info.collect;
 
 import com.user.info.collect.entity.Boss;
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 @SpringBootApplication
+@MapperScan("com.user.info.collect.mapper")
 public class CollectApplication {
 
     public static void main(String[] args) {
-        ConfigurableApplicationContext applicationContext = null;
+
         try {
-            applicationContext = SpringApplication.run(CollectApplication.class, args);
+            BeanFactory.applicationContext = SpringApplication.run(CollectApplication.class, args);
 
 
-            RestTemplate restTemplate = RestTemplateConfig.getRestTemplate(applicationContext);
+            RestTemplate restTemplate = RestTemplateConfig.getRestTemplate();
 
             MapResponse response = null;
             String url = null;
@@ -32,9 +33,11 @@ public class CollectApplication {
                 List<Boss> bossList = response.getContent();
 
                 if (bossList != null) {
+
                     for (Boss b : bossList) {
                         if (Objects.nonNull(b.getTel())) {
                             System.out.println(b.getName() + ":" + b.getTel());
+                            BeanFactory.bossMapper().save(b);
                         }
                     }
                 }
@@ -44,9 +47,5 @@ public class CollectApplication {
         }
 
     }
-
-
-
-
 
 }

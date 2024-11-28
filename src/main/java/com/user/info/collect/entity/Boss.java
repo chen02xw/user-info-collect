@@ -5,10 +5,18 @@ import lombok.Data;
 @Data
 public class Boss {
 
-    private String tel;
-
-    private String city_name;
+    private String cityId;
+    private String cityName;
 
     private String name;
+
+    private String area;
+    private String areaName;
+    private String addr;
+
+    private String stdTag;
+    private String stdTagId;
+
+    private String tel;
 
 }

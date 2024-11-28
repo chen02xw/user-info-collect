@@ -1,7 +1,6 @@
 package com.user.info.collect;
 
 import com.user.info.collect.entity.City;
-import org.springframework.core.io.ClassPathResource;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -29,8 +28,6 @@ public class DataFactory {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] strs = line.split(",");
-                System.out.println(line);
-                System.out.println(strs[0]);
                 citys.add(new City(strs[0], strs[1]));
             }
             reader.close();

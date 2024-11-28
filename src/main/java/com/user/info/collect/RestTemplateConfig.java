@@ -36,8 +36,8 @@ public class RestTemplateConfig {
     }
 
 
-    public static RestTemplate getRestTemplate(ApplicationContext applicationContext) {
-        ClientHttpRequestFactory requestFactory  = applicationContext.getBean(ClientHttpRequestFactory.class);
+    public static RestTemplate getRestTemplate() {
+        ClientHttpRequestFactory requestFactory  = BeanFactory.applicationContext.getBean(ClientHttpRequestFactory.class);
 
         RestTemplate restTemplate = new RestTemplate(requestFactory);
         MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter =
